@@ -188,7 +188,7 @@
 <script>
   const checkoutButton = document.getElementById('checkout-button');
   checkoutButton.addEventListener('click', () => {
-    fetch('https://auralux-stripe.onrender.com/create-checkout-session', {
+    fetch('https://auralux.onrender.com', {
       method: 'POST',
     })
     .then(res => res.json())
