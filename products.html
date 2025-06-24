@@ -132,16 +132,16 @@
   <main>
     <h2>Our Products</h2>
 
-    <a href="product-airpods.html" class="product-link">
-      <div class="product">
-        <img src="images/airpod-pro-2.png" alt="Airpod Pro 2" />
-        <div class="product-info">
-          <h3>Airpod Pro 2</h3>
-          <p>Click to view details</p>
-          <p><strong>Price:</strong> $130 AUD</p>
-        </div>
-      </div>
-    </a>
+    <div class="product">
+  <img src="images/airpod-pro-2.png" alt="Airpod Pro 2" />
+  <div class="product-info">
+    <h3>Airpod Pro 2</h3>
+    <p>1:1 replica, same look and feel.</p>
+    <p><strong>Price:</strong> $130 AUD</p>
+    <button id="checkout-button" class="buy-button">Buy Now</button>
+  </div>
+</div>
+
 
     <div class="product">
       <img src="images/TNTMinecraft.webp" alt="TNT Minecraft Pillow x2" />
@@ -174,7 +174,7 @@
     </div>
 
     <section class="shipping-payment">
-      <h2>Shipping and Payment Information</h2>
+      <h2>🚚 Shipping and Payment Information</h2>
       <h3>Shipping Details</h3>
       <p>All products are shipped via Australia Post with tracking provided. Orders are processed within 1–2 business days. Standard shipping takes 3–7 business days within Australia.</p>
       <h3>Payment Methods</h3>
@@ -185,6 +185,19 @@
   <footer>
     &copy; 2025 AuraLux. All rights reserved.
   </footer>
+<script>
+  const checkoutButton = document.getElementById('checkout-button');
+  checkoutButton.addEventListener('click', () => {
+    fetch('https://auralux-stripe.onrender.com/create-checkout-session', {
+      method: 'POST',
+    })
+    .then(res => res.json())
+    .then(data => {
+      window.location.href = data.url;
+    })
+    .catch(err => console.error('Error:', err));
+  });
+</script>
 
 </body>
 </html>
